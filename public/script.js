@@ -3,5 +3,9 @@ function goToPage2() {
 }
 
 function goToPage1() {
-    window.location.href = "index.html";
+    window.location.href = "./index.html";
+}
+
+function goToPage1() {
+    window.location.href = "page3";
 }
