@@ -1,5 +1,5 @@
 function goToPage2() {
-    window.location.href = "./page2.html";
+    window.location.href = "page2.html";
 }
 
 function goToPage1() {
@@ -7,5 +7,5 @@ function goToPage1() {
 }
 
 function goToPage1() {
-    window.location.href = "./page3";
+    window.location.href = "page3";
 }
