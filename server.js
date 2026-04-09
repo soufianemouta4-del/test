@@ -1,14 +1,27 @@
 const express = require('express');
 const path = require('path');
-const axios = require('axios');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.urlencoded({ extended: true })); // مهم للفورم
-app.use(express.json()); // مهم لو كنت تبعث JSON
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
+// Routes
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
+app.get('/page2', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'page2.html'));
+});
 
-app.listen(PORT, () => console.log(`Server is running: http://localhost:${PORT}`));
+// 404 Handler (اختياري)
+app.use((req, res) => {
+    res.status(404).send('<h1>الصفحة غير موجودة 404</h1>');
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running: http://localhost:${PORT}`);
+});
