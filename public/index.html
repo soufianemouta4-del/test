@@ -668,17 +668,22 @@
 
     // عند تحميل الصفحة أو تغيير الـ hash
     function handleHashChange() {
-        const hash = window.location.hash.substring(1); // إزالة الـ #
-        
-        if (hash === 'page2') {
-            goToPage('page2');
-        } else {
-            goToPage('page1'); // الافتراضي
-        }
+    const hash = window.location.hash;
+    
+    if (hash === '#page2') {
+        document.getElementById('page1').style.display = 'none';
+        document.getElementById('id-page2').style.display = 'block';
+        document.body.style.backgroundColor = '#fff0f5'; // تغيير الخلفية كما في تصميمك
+    } else {
+        document.getElementById('page1').style.display = 'block';
+        document.getElementById('id-page2').style.display = 'none';
+        document.body.style.backgroundColor = '#faf7f2'; // العودة للون الأصلي
     }
+}
 
-    // تشغيل الدالة عند تحميل الصفحة
-    window.onload = handleHashChange;
+// التشغيل عند التحميل وعند تغيير الهش
+window.addEventListener('hashchange', handleHashChange);
+window.addEventListener('load', handleHashChange);
 
     // الاستماع لتغيير الـ hash (مثل الضغط على زر الرجوع في المتصفح)
     window.addEventListener('hashchange', handleHashChange);
